@@ -22,5 +22,3 @@ class BookCommentsController < ApplicationController
     params.require(:book_comment).permit(:comment)
   end
 end
-
-

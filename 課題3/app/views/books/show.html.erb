@@ -59,7 +59,6 @@
       <!--コメント投稿フォーム-->
       <div class="new-comment">
         <%= form_with(model:[@book, @book_comment], local: true) do |f| %>
-          <%= render 'layouts/errors', obj: @book_comment %>
           <%= f.text_area :comment, rows:'5',placeholder: "コメントをここに" %>
           <%= f.submit "送信する" %>
         <% end %>
