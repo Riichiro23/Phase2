@@ -13,8 +13,7 @@ class BooksController < ApplicationController
       flash[:notice] = "Book was successfully created."
       redirect_to book_path(@book.id)
     else
-      @books = Book.all # indexアクションの変数
-      @book = Book.new  # indexアクションの変数
+      @books = Book.all
       render :index
     end
   end
