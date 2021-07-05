@@ -2,13 +2,13 @@ class BooksController < ApplicationController
   before_action :authenticate_user!
   before_action :ensure_correct_user, only: [:edit, :update, :destroy]
 
-  def show
-    @book = Book.find(params[:id])
-    @book_comment = BookComment.new
+  def show   # books#showページ内のコメント投稿フォームををBookCommentモデルで作成
+    @book = Book.find(params[:id]) # favorites/_favorite.html.erb(いいねボタンの部分テンプレート)に渡す変数  and  # books/_comment.html.erb(コメント投稿フォームの部分テンプレート)に渡す変数
+    @book_comment = BookComment.new # books/_comment.html.erb(コメント投稿フォームの部分テンプレート)に渡す変数  
   end
 
   def index
-    @books = Book.all
+    @books = Book.all  # favorites/_favorite.html.erb(いいねボタンの部分テンプレート)に渡す変数
     @book = Book.new
   end
 

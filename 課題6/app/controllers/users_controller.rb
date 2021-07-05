@@ -4,7 +4,7 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    @books = @user.books
+    @books = @user.books  # favorites/_favorite.html.erb(いいねボタンの部分テンプレート)に渡す変数
     @book = Book.new
   end
 

@@ -17,7 +17,12 @@
           </td>
           <td><%= link_to @book.title, book_path(@book) %></td>
           <td><%= @book.body %></td>
-          <td class="favorite-btn"><%= render "favorites/favorite-btn", book: @book %></td>
+           <!--いいねボタンのレンダー先(非同期通信)-->
+          <td>
+            <div id="favorite_buttons_<%= @book.id %>"> <!--id (= "favorite_buttons")を指定することで、いいねの保存・削除を非同期で行うためのfavorite/create.js.erbでも指定できるようにする-->
+            <%= render partial: 'favorites/favorite-btn', locals: {book: @book} %> <!--レンダー先の,favorites/favorite-btn(部分テンプレートファイル)の変数bookに、books#showの@bookを引数に渡している-->
+            </div>
+          </td>
           <td>コメント数: <%= @book.book_comments.count %></td>
           <% if @book.user == current_user %>
             <td><%= link_to 'Edit', edit_book_path(@book), class: "btn btn-sm btn-success edit_book_#{@book.id}" %></td>
@@ -25,7 +30,12 @@
           <% end %>
         </tr>
       </table>
-      <%= render 'books/comment', book: @book,book_comment: @book_comment%>
+      <!--コメント投稿フォームの部分テンプレート-->
+      <!--レンダー先のbooks/_comment.html.erb(コメント投稿フォームの部分テンプレート)の変数に、books#showアクションの@book, @book_commentを渡している-->
+      <div id="comment-create">
+        <%= render 'books/comment', book: @book,book_comment: @book_comment%>
+      </div>
     </div>
   </div>
 </div>
+

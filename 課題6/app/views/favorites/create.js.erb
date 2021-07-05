@@ -1,0 +1,6 @@
+
+$('#favorite_buttons_<%= @book.id %>').html("<%= j(render partial: 'favorites/favorite-btn', locals: {book: @book}) %>");
+
+
+
+<!--faborite_buttons = いいねのボタンを埋め込んでいるビューファイルの、いいねリンクを囲っている指定タグの名称-->
